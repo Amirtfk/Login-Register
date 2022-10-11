@@ -1,6 +1,7 @@
 package com.example.backend.security;
 
 
+import com.example.backend.service.AppUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +12,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+   private final AppUserDetailService appUserDetailService;
+
+    public SecurityConfig(AppUserDetailService appUserDetailService) {
+        this.appUserDetailService = appUserDetailService;
+    }
 
     @Bean
     PasswordEncoder passwordEncoder(){
@@ -25,13 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").hasRole("admin") // Nur für Nutzer der Rolle "admin" sichtbar
                 .and().httpBasic();
     }
+
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("Seb W.")
-                .password(passwordEncoder().encode("ABC123"))
-                .roles("ueber18")
-                ;
+        auth.userDetailsService(appUserDetailService); //authentication via userDetailsService mit Hilfe unserer Serviceklasse
     }
 
 }
