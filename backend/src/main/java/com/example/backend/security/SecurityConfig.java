@@ -27,10 +27,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests() // wir wollen Regeln festlegen für authorisierte Requests antmatchers=neue Regel für bestimme url!
-                .antMatchers("/api/hello").permitAll() // Für alle sichtbar
-                .antMatchers("/api/ciao").authenticated() // Für alle eingeloggten sichtbar
+                .antMatchers("/api/hello").authenticated() // Für eingeloggten sichtbar
+                .antMatchers("/api/ciao").authenticated() // Für eingeloggten sichtbar
+                .antMatchers("/api/user/login").permitAll() // Für alle
+                .antMatchers("/api/user/register").permitAll() // Für alle
                 .antMatchers("/admin/*").hasRole("admin") // Nur für Nutzer der Rolle "admin" sichtbar
-                .and().httpBasic();
+                .and().httpBasic().and().csrf().disable();
+                // csrf().disable() >> brauchen wir csrf(): disable machen, weil es by default in Spring Security enable ist
     }
 
     @Override
