@@ -62,22 +62,22 @@ function App() {
                 {!me ?
                     <>
                     <h3>Login</h3>
-                    <input value={username} onChange={event => setUsername(event.target.value)}/>
-                    <input type={"password"} value={password} onChange={event => setPassword(event.target.value)}/>
-                    <button onClick={handleLogin}>Login</button>
+                    <input className={"input-style"} placeholder={"username ..."} value={username} onChange={event => setUsername(event.target.value)}/>
+                    <input className={"input-style"} placeholder={"password ..."} type={"password"} value={password} onChange={event => setPassword(event.target.value)}/>
+                    <button className={"button-style"} onClick={handleLogin}>Login</button>
 
 
                     <h3>Sign Up</h3>
-                    <input value={newUsername} onChange={event => setnewUsername(event.target.value)} />
-                    <input type={"password"} value={newPassword} onChange={event => setnewPassword(event.target.value)} />
-                    <button onClick={handleRegister}>Sign Up</button>
+                    <input className={"input-style"} placeholder={"username ..."} value={newUsername} onChange={event => setnewUsername(event.target.value)} />
+                    <input className={"input-style"} placeholder={"password ..."} type={"password"} value={newPassword} onChange={event => setnewPassword(event.target.value)} />
+                    <button className={"button-style"} onClick={handleRegister}>Sign Up</button>
 
                     </>
 
                     :
                     <>
                     <p>Angemeldet als: {me}</p>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button className={"logout-button-style"} onClick={handleLogout}>Logout</button>
                     {/*<p>{welcomeMessage}</p>
                     <button onClick={fetchWelcomeMessage}>Say Hello!</button>*/}
                     </>

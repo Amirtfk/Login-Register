@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.input-style {
+  margin: 5px;
+  padding: 8px;
+  width: 180px;
+  border: 3px solid #d8cf67;
+  border-radius: 5px;
+}
+
+.button-style {
+  width: 88px;
+  padding: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bolder;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.logout-button-style {
+  width: 88px;
+  padding: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bolder;
+  border-radius: 5px;
+  border: 0px;
+  background-color: #ff6c6c;
+}
